@@ -10,6 +10,9 @@ Vote Counting
 # Authors
 
 * Jose Labra
+* Lucas García
+* Victor Castaño
+* Adrián Jiménez
 
 
  
