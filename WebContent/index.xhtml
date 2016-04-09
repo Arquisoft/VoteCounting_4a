@@ -1,10 +1,12 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-
-	
-		Results
+	<h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+	    <p:chart type="line" model="#{chartView.animatedModel1}" style="width:400px;" />
+	    <p:chart type="bar" model="#{chartView.animatedModel2}" style="width:400px;" />
+	</h:panelGrid>
 </ui:composition>
 
