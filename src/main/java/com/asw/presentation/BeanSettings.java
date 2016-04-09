@@ -1,4 +1,4 @@
-package voteCounting;
+package com.asw.presentation;
 
 public class BeanSettings {
 
