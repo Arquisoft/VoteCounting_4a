@@ -13,5 +13,7 @@ public interface VotoGateway {
 	List<Voto> findAll() throws SQLException;
 	
 	List<Voto> votosAContar() throws SQLException;
+	
+	void actualizarLeido(long id) throws SQLException;
 
 }

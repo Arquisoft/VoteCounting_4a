@@ -78,4 +78,28 @@ public class VotoGatewayImpl implements VotoGateway {
 		}
 		return data;
 	}
+
+	@Override
+	public void actualizarLeido(long id) throws SQLException {
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+		try {
+			pst = con.prepareStatement(Conf.get("UPDATE_LEIDO"));
+			pst.setLong(1, id);
+			rs = pst.executeQuery();
+			con.commit();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pst.close();
+				rs.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+	}
 }
