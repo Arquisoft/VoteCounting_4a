@@ -1,13 +1,13 @@
 package com.asw.conf;
 
-import com.asw.persistence.VotosGateway;
-import com.asw.persistence.impl.VotosGatewayImpl;
+import com.asw.persistence.VotacionGateway;
+import com.asw.persistence.impl.VotacionGatewayImpl;
 
 
 public class PersistenceFactory {
 	
-	public static VotosGateway getVotosGateway() {
-		return new VotosGatewayImpl();
+	public static VotacionGateway getVotosGateway() {
+		return new VotacionGatewayImpl();
 	}
 
 }

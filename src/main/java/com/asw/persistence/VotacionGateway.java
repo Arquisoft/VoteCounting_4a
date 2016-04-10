@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.asw.model.VotacionDTO;
 
-public interface VotosGateway {
+public interface VotacionGateway {
 
 	void setConnection(Connection con);
 
