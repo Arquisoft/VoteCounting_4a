@@ -17,7 +17,7 @@ public class ListVotes {
 				votoUpd.actualizarLeido(voto.getId());
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException ("Error inesperado con la base de datos.");
 		}
 		return allPendingVotes;
 	}

@@ -23,7 +23,11 @@ public class ListVotacion {
 		} catch (SQLException e) {
 			throw new RuntimeException ("Error inesperado con la base de datos.");
 		} finally {
-			Jdbc.close(con);
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}

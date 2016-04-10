@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import com.asw.instanciator.VotesShow;
 import com.asw.model.Voto;
  
-@ManagedBean
+@ManagedBean (name="beanResults")
 @ApplicationScoped
 public class BeanResults implements Serializable {
 

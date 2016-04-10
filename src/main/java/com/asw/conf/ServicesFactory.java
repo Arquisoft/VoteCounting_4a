@@ -6,7 +6,7 @@ import com.asw.business.impl.VoteServiceImpl;
 
 public class ServicesFactory {
 	
-	public static VoteService getAdminService () {
+	public static VoteService getVotesService () {
 		return new VoteServiceImpl();
 	}
 

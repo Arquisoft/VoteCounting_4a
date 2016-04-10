@@ -1,6 +1,6 @@
 package com.asw.presentation;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import com.asw.conf.ServicesFactory;
 import com.asw.instanciator.AbstractFactory;
@@ -19,28 +20,41 @@ import com.asw.model.Voto;
 
 @ManagedBean(name = "instanciatorBean", eager = true)
 @ApplicationScoped
-public class BeanInstanciator {
+public class BeanInstanciator implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String pageView;
-	
+
 	private static final long TIEMPO_MS = 15000;
 
-	@ManagedProperty("#{beanResults}")
-	private BeanResults results;
-	
+	@ManagedProperty(value = "#{beanResults}")
+	private BeanResults beanResults;
+
+	public BeanResults getBeanResults() {
+		return beanResults;
+	}
+
+	public void setBeanResults(BeanResults beanResults) {
+		this.beanResults = beanResults;
+	}
+
 	private VotesCalc votesCalc;
-
-	public BeanResults getResults() {
-		return results;
-	}
-
-	public void setResults(BeanResults results) {
-		this.results = results;
-	}
 
 	@PostConstruct
 	public void init() {
 		System.out.println("BeanInstanciator - INIT");
+		beanResults = (BeanResults) FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get(new String("beanResults"));
+		if (beanResults == null) {
+			System.out.println("results - No existia");
+			beanResults = new BeanResults();
+			FacesContext.getCurrentInstance().getExternalContext()
+					.getSessionMap().put("beanResults", beanResults);
+		}
 		//cargarTipoVotacion();
 	}
 
@@ -49,7 +63,7 @@ public class BeanInstanciator {
 	 * instanciará el sistema de una forma u otra.
 	 */
 	private void cargarTipoVotacion() {
-		List<Votacion> votaciones = ServicesFactory.getAdminService()
+		List<Votacion> votaciones = ServicesFactory.getVotesService()
 				.listAllVotaciones();
 
 		Votacion vot = null;
@@ -77,7 +91,7 @@ public class BeanInstanciator {
 			}
 		}
 		this.votesCalc = absf.crearCalc();
-		results.setVotesShow(absf.crearShow());
+		beanResults.setVotesShow(absf.crearShow());
 		calculoVotosPeriodicos();
 	}
 
@@ -86,12 +100,9 @@ public class BeanInstanciator {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				List<Voto> votoscalculados;
-				// TODO: llamar a business para bajarse los no leidos
-
-				votoscalculados = new ArrayList<Voto>();
-
-				results.getVotos().addAll(votoscalculados);
+				List<Voto> votoscalculados = ServicesFactory.getVotesService()
+						.getPendingVotes();
+				beanResults.getVotos().addAll(votoscalculados);
 				System.out.println("Calculados " + votoscalculados.size()
 						+ " votos nuevos");
 			}
