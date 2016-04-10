@@ -36,7 +36,7 @@ public class VotoDTO {
 		this.colegio_electoral = colegio_electoral;
 	}
 	public long getOpcion() {
-		return opcion;
+		return opcion; 
 	}
 	public void setOpcion(long opcion) {
 		this.opcion = opcion;
