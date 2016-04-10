@@ -7,7 +7,7 @@ import java.util.List;
 import com.asw.business.util.Jdbc;
 import com.asw.conf.PersistenceFactory;
 import com.asw.model.VotacionDTO;
-import com.asw.persistence.VotosGateway;
+import com.asw.persistence.VotacionGateway;
 
 public class ListVotacion {
 
@@ -16,7 +16,7 @@ public class ListVotacion {
 		List<VotacionDTO> result = null;
 		try {
 			con = Jdbc.getConnection();	
-			VotosGateway tg = PersistenceFactory.getVotosGateway();
+			VotacionGateway tg = PersistenceFactory.getVotosGateway();
 			tg.setConnection(con);
 			//Saco todos los tipos de vehiculo
 			result = tg.findAll();			

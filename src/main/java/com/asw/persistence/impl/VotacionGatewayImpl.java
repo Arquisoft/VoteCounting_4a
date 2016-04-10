@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asw.model.VotacionDTO;
-import com.asw.persistence.VotosGateway;
+import com.asw.persistence.VotacionGateway;
 
-public class VotosGatewayImpl implements VotosGateway {
+public class VotacionGatewayImpl implements VotacionGateway {
 
 	private Connection con;
 
