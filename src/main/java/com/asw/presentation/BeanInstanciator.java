@@ -37,7 +37,7 @@ public class BeanInstanciator {
 	@PostConstruct
 	public void init() {
 		System.out.println("BeanInstanciator - INIT");
-		//cargarTipoVotacion();
+		cargarTipoVotacion();
 	}
 
 	/**
