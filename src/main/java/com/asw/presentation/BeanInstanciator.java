@@ -72,7 +72,7 @@ public class BeanInstanciator {
 				throw new RuntimeException("Tipo de votación desconocida");
 			}
 		}
-		//this.votesCalc = absf.crea
+		this.votesCalc = absf.crearCalc();
 
 		calculoVotosPeriodicos();
 	}
