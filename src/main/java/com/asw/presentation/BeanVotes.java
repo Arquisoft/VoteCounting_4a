@@ -20,13 +20,14 @@ public class BeanVotes implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public void prueba (ActionEvent actionEvent) {
-		CommandExecutor executor = new CommandExecutor();
-		List<Voto> lista;
-		try {
-			lista = (List<Voto>) executor.execute(new FindAllVotes());
-		} catch (BusinessException ex) {
-			ex.printStackTrace();
-		}
+	public void prueba () {
+//		CommandExecutor executor = new CommandExecutor();
+//		List<Voto> lista;
+//		try {
+//			lista = (List<Voto>) executor.execute(new FindAllVotes());
+//		} catch (BusinessException ex) {
+//			ex.printStackTrace();
+//		}
+		System.out.println("No me da ningun error");
 	}
 }
