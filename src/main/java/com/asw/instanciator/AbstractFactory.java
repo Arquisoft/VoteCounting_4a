@@ -2,6 +2,6 @@ package com.asw.instanciator;
 
 public abstract class AbstractFactory {
 
-	abstract VotesCalc crearCalc();
-	abstract VotesShow crearShow();
+	public abstract VotesCalc crearCalc();
+	public abstract VotesShow crearShow();
 }
