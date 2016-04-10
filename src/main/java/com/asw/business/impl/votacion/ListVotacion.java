@@ -6,14 +6,14 @@ import java.util.List;
 
 import com.asw.business.util.Jdbc;
 import com.asw.conf.PersistenceFactory;
-import com.asw.model.VotacionDTO;
+import com.asw.model.Votacion;
 import com.asw.persistence.VotacionGateway;
 
 public class ListVotacion {
 
-	public List<VotacionDTO> listAll() {
+	public List<Votacion> listAll() {
 		Connection con = null;
-		List<VotacionDTO> result = null;
+		List<Votacion> result = null;
 		try {
 			con = Jdbc.getConnection();	
 			VotacionGateway tg = PersistenceFactory.getVotosGateway();

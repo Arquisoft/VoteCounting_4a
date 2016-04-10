@@ -14,8 +14,8 @@ import com.asw.conf.ServicesFactory;
 import com.asw.instanciator.AbstractFactory;
 import com.asw.instanciator.ReferendumFactory;
 import com.asw.instanciator.VotesCalc;
-import com.asw.model.VotacionDTO;
-import com.asw.model.VotoDTO;
+import com.asw.model.Votacion;
+import com.asw.model.Voto;
 
 @ManagedBean(name = "instanciatorBean", eager = true)
 @ApplicationScoped
@@ -49,11 +49,11 @@ public class BeanInstanciator {
 	 * instanciará el sistema de una forma u otra.
 	 */
 	private void cargarTipoVotacion() {
-		List<VotacionDTO> votaciones = ServicesFactory.getAdminService()
+		List<Votacion> votaciones = ServicesFactory.getAdminService()
 				.listAllVotaciones();
 
-		VotacionDTO vot = null;
-		for (VotacionDTO vdto : votaciones) {
+		Votacion vot = null;
+		for (Votacion vdto : votaciones) {
 			if (vdto.isActiva()) {
 				vot = vdto;
 				break;

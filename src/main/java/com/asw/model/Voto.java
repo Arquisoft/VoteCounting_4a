@@ -2,7 +2,7 @@ package com.asw.model;
 
 import java.util.Date;
 
-public class VotoDTO {
+public class Voto {
 
 	private long id;
 	private Date fecha;
@@ -10,12 +10,13 @@ public class VotoDTO {
 	private long opcion;
 	
 	
-	public VotoDTO(long id, Date fecha, long colegio_electoral, long opcion) {
+	public Voto(long id, Date fecha, long colegio_electoral, long opcion) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
 		this.colegio_electoral = colegio_electoral;
 		this.opcion = opcion;
+		
 	}
 	public long getId() {
 		return id;

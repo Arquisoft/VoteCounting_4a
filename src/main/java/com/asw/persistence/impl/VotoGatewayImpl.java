@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asw.conf.Conf;
-import com.asw.model.VotacionDTO;
-import com.asw.persistence.VotacionGateway;
-import com.asw.persistence.Voto;
+import com.asw.model.Voto;
 import com.asw.persistence.VotoGateway;
 
 public class VotoGatewayImpl implements VotoGateway {
@@ -27,14 +25,15 @@ public class VotoGatewayImpl implements VotoGateway {
 
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<VotacionDTO> data = new ArrayList<VotacionDTO>();
+		List<Voto> data = new ArrayList<Voto>();
 
 		try {
 			pst = con.prepareStatement(Conf.get("FIND_ALL_VOTES"));
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getLong(1)+", "+rs.getString(2));
-				data.add(new VotacionDTO(rs.getLong(1), rs.getString(2)));
+				System.out.println(rs.getLong(1) + ", " + rs.getString(2));
+				data.add(new Voto(rs.getLong(1), rs.getDate(2), rs.getLong(3),
+						rs.getLong(4)));
 			}
 
 		} catch (SQLException e) {
@@ -55,14 +54,15 @@ public class VotoGatewayImpl implements VotoGateway {
 	public List<Voto> votosAContar() throws SQLException {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<VotacionDTO> data = new ArrayList<VotacionDTO>();
+		List<Voto> data = new ArrayList<Voto>();
 
 		try {
 			pst = con.prepareStatement(Conf.get("FIND_ALL_VOTES_NO_READ"));
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getLong(1)+", "+rs.getString(2));
-				data.add(new VotacionDTO(rs.getLong(1), rs.getString(2)));
+				System.out.println(rs.getLong(1) + ", " + rs.getString(2));
+				data.add(new Voto(rs.getLong(1), rs.getDate(2), rs.getLong(3),
+						rs.getLong(4)));
 			}
 
 		} catch (SQLException e) {

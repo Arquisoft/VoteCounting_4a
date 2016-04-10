@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.asw.model.VotacionDTO;
+import com.asw.model.Votacion;
 import com.asw.persistence.VotacionGateway;
 
 public class VotacionGatewayImpl implements VotacionGateway {
@@ -20,11 +20,11 @@ public class VotacionGatewayImpl implements VotacionGateway {
 	}
 
 	@Override
-	public List<VotacionDTO> findAll() throws SQLException {
+	public List<Votacion> findAll() throws SQLException {
 
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<VotacionDTO> data = new ArrayList<VotacionDTO>();
+		List<Votacion> data = new ArrayList<Votacion>();
 
 		try {
 			// pst = con.prepareStatement(Conf.get("SQL_FIND_ALL"));
@@ -32,7 +32,7 @@ public class VotacionGatewayImpl implements VotacionGateway {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				System.out.println(rs.getLong(1)+", "+rs.getString(2));
-				data.add(new VotacionDTO(rs.getLong(1), rs.getString(2)));
+				data.add(new Votacion(rs.getLong(1), rs.getString(2)));
 			}
 
 		} catch (SQLException e) {
