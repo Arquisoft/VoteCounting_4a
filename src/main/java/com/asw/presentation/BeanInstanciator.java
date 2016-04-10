@@ -2,6 +2,8 @@ package com.asw.presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
@@ -20,6 +22,8 @@ import com.asw.model.VotoDTO;
 public class BeanInstanciator {
 
 	private String pageView;
+	
+	private static final long TIEMPO_MS = 15000;
 
 	@ManagedProperty("#{beanResults}")
 	private BeanResults results;
@@ -73,19 +77,26 @@ public class BeanInstanciator {
 			}
 		}
 		this.votesCalc = absf.crearCalc();
-
+		results.setVotesShow(absf.crearShow());
 		calculoVotosPeriodicos();
 	}
 
 	private void calculoVotosPeriodicos() {
-		List<VotoDTO> votoscalculados;
-		// TODO: llamar a business para bajarse los no leidos
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				List<VotoDTO> votoscalculados;
+				// TODO: llamar a business para bajarse los no leidos
 
-		votoscalculados = new ArrayList<VotoDTO>();
+				votoscalculados = new ArrayList<VotoDTO>();
 
-		results.getVotos().addAll(votoscalculados);
-		System.out.println("Calculados " + votoscalculados.size()
-				+ " votos nuevos");
+				results.getVotos().addAll(votoscalculados);
+				System.out.println("Calculados " + votoscalculados.size()
+						+ " votos nuevos");
+			}
+		};
+		timer.schedule(task, 0, TIEMPO_MS);
 	}
 
 	public String getPageView() {

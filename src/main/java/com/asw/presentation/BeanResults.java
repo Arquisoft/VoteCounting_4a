@@ -29,6 +29,7 @@ public class BeanResults implements Serializable {
 	}
 
 	public VotesShow getVotesShow() {
+		votesShow.setResults(votosCalculados);
 		return votesShow;
 	}
 
