@@ -1,4 +1,4 @@
-package com.asw.business.impl.votacion;
+package com.asw.business.impl.voto;
 
 import java.sql.SQLException;
 import java.util.List;

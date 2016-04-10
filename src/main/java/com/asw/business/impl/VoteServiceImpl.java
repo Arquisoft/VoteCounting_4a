@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.asw.business.VoteService;
 import com.asw.business.impl.votacion.ListVotacion;
-import com.asw.business.impl.votacion.ListVotes;
+import com.asw.business.impl.voto.ListVotes;
 import com.asw.model.Votacion;
 import com.asw.model.Voto;
 
