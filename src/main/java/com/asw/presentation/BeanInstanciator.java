@@ -10,6 +10,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.faces.bean.*;
 
 import com.asw.conf.ServicesFactory;
 import com.asw.instanciator.AbstractFactory;
@@ -31,7 +32,7 @@ public class BeanInstanciator implements Serializable{
 
 	private static final long TIEMPO_MS = 15000;
 
-	@ManagedProperty(value = "#{beanResults}")
+	@ManagedProperty(value = "#{results}")
 	private BeanResults beanResults;
 
 	public BeanResults getBeanResults() {
@@ -53,9 +54,9 @@ public class BeanInstanciator implements Serializable{
 			System.out.println("results - No existia");
 			beanResults = new BeanResults();
 			FacesContext.getCurrentInstance().getExternalContext()
-					.getSessionMap().put("beanResults", beanResults);
+					.getApplicationMap().put(new String("beanResults"), beanResults);
 		}
-		//cargarTipoVotacion();
+		cargarTipoVotacion();
 	}
 
 	/**

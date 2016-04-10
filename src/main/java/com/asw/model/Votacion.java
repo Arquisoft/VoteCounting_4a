@@ -6,6 +6,7 @@ public class Votacion {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.activa=true;
 	}
 	
 	private long id;
