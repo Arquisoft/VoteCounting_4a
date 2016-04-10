@@ -7,7 +7,6 @@
 .classpath
 .settings/*
 /target
-/data
 
 .metadata
 bin/
