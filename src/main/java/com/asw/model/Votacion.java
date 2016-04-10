@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TVotacion")
-public class Votacion {
-	
+public class Votacion{
+
 	Votacion() {}
 	
 	@Id @GeneratedValue

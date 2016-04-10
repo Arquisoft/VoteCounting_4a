@@ -1,20 +1,24 @@
 package com.asw.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="Voto")
+@Table(name = "Voto")
 public class Voto {
-	
-	@Id@GeneratedValue
+
+	@Id
+	@GeneratedValue
 	private long id;
 	@ManyToOne
 	private Opcion opcion;
@@ -22,15 +26,19 @@ public class Voto {
 	private ColegioElectoral colegioElectoral;
 	@Temporal(TemporalType.DATE)
 	private Date fechaVoto;
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((colegioElectoral == null) ? 0 : colegioElectoral.hashCode());
-		result = prime * result + ((fechaVoto == null) ? 0 : fechaVoto.hashCode());
+		result = prime
+				* result
+				+ ((colegioElectoral == null) ? 0 : colegioElectoral.hashCode());
+		result = prime * result
+				+ ((fechaVoto == null) ? 0 : fechaVoto.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,16 +60,19 @@ public class Voto {
 			return false;
 		return true;
 	}
+
 	public Opcion getOpcion() {
 		return opcion;
 	}
+
 	void _setOpcion(Opcion opcion) {
 		this.opcion = opcion;
 	}
-	
+
 	public ColegioElectoral getColegioElectoral() {
 		return colegioElectoral;
 	}
+
 	void _setColegioElectoral(ColegioElectoral colegioElectoral) {
 		this.colegioElectoral = colegioElectoral;
 	}

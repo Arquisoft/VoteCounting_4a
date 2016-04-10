@@ -5,9 +5,9 @@ import com.asw.persistence.VotoFinder;
 
 public class FindAllVotes implements Command {
 
-	@Override
 	public Object execute() throws BusinessException {
 		return VotoFinder.findAll();
 	}
+
 
 }

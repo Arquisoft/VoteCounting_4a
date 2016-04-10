@@ -12,7 +12,7 @@ import com.asw.business.FindAllVotes;
 import com.asw.model.Voto;
 import com.asw.model.exception.BusinessException;
 
-@ManagedBean ()
+@ManagedBean
 public class BeanVotes implements Serializable {
 
 	/**
@@ -21,13 +21,13 @@ public class BeanVotes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public void prueba () {
-//		CommandExecutor executor = new CommandExecutor();
-//		List<Voto> lista;
-//		try {
-//			lista = (List<Voto>) executor.execute(new FindAllVotes());
-//		} catch (BusinessException ex) {
-//			ex.printStackTrace();
-//		}
+		CommandExecutor executor = new CommandExecutor();
+		List<Voto> lista;
+		try {
+			lista = (List<Voto>) executor.execute(new FindAllVotes());
+		} catch (BusinessException ex) {
+			ex.printStackTrace();
+		}
 		System.out.println("No me da ningun error");
 	}
 }
