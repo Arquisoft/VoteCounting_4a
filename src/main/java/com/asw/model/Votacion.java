@@ -1,8 +1,8 @@
 package com.asw.model;
 
-public class VotacionDTO {
+public class Votacion {
 	
-	public VotacionDTO(long id, String nombre) {
+	public Votacion(long id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

@@ -8,12 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asw.conf.Conf;
-import com.asw.model.VotacionDTO;
-import com.asw.persistence.VotacionGateway;
-import com.asw.persistence.Votante;
+import com.asw.model.Votante;
 import com.asw.persistence.VotanteGateway;
-import com.asw.persistence.Voto;
-import com.asw.persistence.VotoGateway;
 
 public class VotanteGatewayImpl implements VotanteGateway {
 
@@ -29,7 +25,7 @@ public class VotanteGatewayImpl implements VotanteGateway {
 
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<Votante> data = new ArrayList<VotacionDTO>();
+		List<Votante> data = new ArrayList<Votante>();
 
 		try {
 			pst = con.prepareStatement(Conf.get("FIND_ALL_VOTERS"));
@@ -58,7 +54,7 @@ public class VotanteGatewayImpl implements VotanteGateway {
 	public Votante findByNif(String nif) throws SQLException {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		Votante data;
+		Votante data = null;
 
 		try {
 			pst = con.prepareStatement(Conf.get("FIND_VOTER_BY_NIF"));

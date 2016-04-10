@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.asw.model.VotacionDTO;
+import com.asw.model.Voto;
 
 public interface VotoGateway {
 

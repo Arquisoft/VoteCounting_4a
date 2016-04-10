@@ -8,12 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asw.conf.Conf;
-import com.asw.model.VotacionDTO;
-import com.asw.persistence.ColegioElectoral;
+import com.asw.model.ColegioElectoral;
 import com.asw.persistence.ColegioElectoralGateway;
-import com.asw.persistence.VotacionGateway;
-import com.asw.persistence.Voto;
-import com.asw.persistence.VotoGateway;
 
 public class ColegioElectoralGatewayImpl implements ColegioElectoralGateway {
 
@@ -29,7 +25,7 @@ public class ColegioElectoralGatewayImpl implements ColegioElectoralGateway {
 
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<Opcion> data = new ArrayList<VotacionDTO>();
+		List<ColegioElectoral> data = new ArrayList<ColegioElectoral>();
 
 		try {
 			pst = con.prepareStatement(Conf.get("FIND_ALL_CE"));
@@ -55,17 +51,17 @@ public class ColegioElectoralGatewayImpl implements ColegioElectoralGateway {
 	}
 
 	@Override
-	public ColegioElectoral findByIdent(long id) {
+	public ColegioElectoral findByIdent(long id) throws SQLException {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		ColegioElectoral data;
+		ColegioElectoral data = null;
 
 		try {
 			pst = con.prepareStatement(Conf.get("FIND_CE_BY_ID"));
 			pst.setLong(1, id);
 			rs = pst.executeQuery();
 			rs.next();
-			data = new ColegioElectoralGatewayImpl(rs.getLong(1),
+			data = new ColegioElectoral(rs.getLong(1),
 					rs.getLong(2), rs.getString(3));
 		} catch (SQLException e) {
 			e.printStackTrace();
