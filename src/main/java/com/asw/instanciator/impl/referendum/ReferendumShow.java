@@ -3,11 +3,11 @@ package com.asw.instanciator.impl.referendum;
 import java.util.List;
 
 import com.asw.instanciator.VotesShow;
-import com.asw.model.VotoDTO;
+import com.asw.model.Voto;
 
 public class ReferendumShow implements VotesShow {
 	
-	private List<VotoDTO> resultados;
+	private List<Voto> resultados;
 
 	@Override
 	public void showResults() {	
@@ -15,7 +15,7 @@ public class ReferendumShow implements VotesShow {
 	}
 
 	@Override
-	public void setResults(List<VotoDTO> results) {
+	public void setResults(List<Voto> results) {
 		resultados = results;
 	}
 

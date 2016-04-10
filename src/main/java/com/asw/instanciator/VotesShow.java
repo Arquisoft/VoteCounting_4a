@@ -2,10 +2,10 @@ package com.asw.instanciator;
 
 import java.util.List;
 
-import com.asw.model.VotoDTO;
+import com.asw.model.Voto;
 
 public interface VotesShow {
 	
 	void showResults();
-	void setResults(List<VotoDTO> results);
+	void setResults(List<Voto> results);
 }

@@ -86,10 +86,10 @@ public class BeanInstanciator {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				List<VotoDTO> votoscalculados;
+				List<Voto> votoscalculados;
 				// TODO: llamar a business para bajarse los no leidos
 
-				votoscalculados = new ArrayList<VotoDTO>();
+				votoscalculados = new ArrayList<Voto>();
 
 				results.getVotos().addAll(votoscalculados);
 				System.out.println("Calculados " + votoscalculados.size()
