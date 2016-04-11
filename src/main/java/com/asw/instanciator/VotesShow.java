@@ -4,10 +4,16 @@ import java.util.List;
 
 import org.primefaces.model.chart.PieChartModel;
 
+import com.asw.conf.ServicesFactory;
 import com.asw.model.Opcion;
 import com.asw.model.Voto;
 
 public abstract class VotesShow {
+	
+	protected VotesShow() {
+		opciones = ServicesFactory.getVotesService().getAllOpciones();
+		this.pieChartModel = new PieChartModel();
+	}
 
 	// Datos
 	protected List<Voto> resultados;

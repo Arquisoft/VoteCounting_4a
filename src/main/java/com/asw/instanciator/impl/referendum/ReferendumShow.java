@@ -2,9 +2,6 @@ package com.asw.instanciator.impl.referendum;
 
 import java.util.List;
 
-import org.primefaces.model.chart.PieChartModel;
-
-import com.asw.conf.ServicesFactory;
 import com.asw.instanciator.VotesShow;
 import com.asw.model.Opcion;
 import com.asw.model.Voto;
@@ -12,9 +9,14 @@ import com.asw.model.Voto;
 public class ReferendumShow extends VotesShow {
 	
 	public ReferendumShow() {
-		opciones = ServicesFactory.getVotesService().getAllOpciones();
-		this.pieChartModel = new PieChartModel();
-		pieChartModel.setTitle("Votes");
+		super();
+		setUpSectChart();
+	}
+
+	private void setUpSectChart() {
+		pieChartModel.setFill(false);
+		pieChartModel.setShowDataLabels(true);
+		pieChartModel.setTitle("Referendum - SECTORES");
 		pieChartModel.setLegendPosition("ne");
 	}
 
