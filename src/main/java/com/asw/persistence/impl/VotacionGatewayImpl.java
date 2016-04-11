@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.asw.conf.Conf;
 import com.asw.model.Votacion;
 import com.asw.persistence.VotacionGateway;
 
@@ -27,15 +28,13 @@ public class VotacionGatewayImpl implements VotacionGateway {
 		List<Votacion> data = new ArrayList<Votacion>();
 
 		try {
-			// pst = con.prepareStatement(Conf.get("SQL_FIND_ALL"));
-			pst = con.prepareStatement("SELECT * FROM TVOTACION WHERE ID=1");
+			pst = con.prepareStatement(Conf.get("SQL_CARGAR_VOTACIONES"));
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getLong(1)+", "+rs.getString(2));
 				data.add(new Votacion(rs.getLong(1), rs.getString(2)));
 			}
-
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {

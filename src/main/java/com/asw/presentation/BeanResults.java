@@ -1,5 +1,6 @@
 package com.asw.presentation;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -17,7 +18,7 @@ public class BeanResults implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
  
-    private List<Voto> votosCalculados;
+    private List<Voto> votosCalculados = new ArrayList<Voto>();
     private VotesShow votesShow;
 
 	public List<Voto> getVotos() {

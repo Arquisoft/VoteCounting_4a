@@ -10,7 +10,6 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
-import javax.faces.bean.*;
 
 import com.asw.conf.ServicesFactory;
 import com.asw.instanciator.AbstractFactory;

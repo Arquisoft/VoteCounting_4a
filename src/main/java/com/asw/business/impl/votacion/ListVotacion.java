@@ -16,7 +16,7 @@ public class ListVotacion {
 		List<Votacion> result = null;
 		try {
 			con = Jdbc.getConnection();	
-			VotacionGateway tg = PersistenceFactory.getVotosGateway();
+			VotacionGateway tg = PersistenceFactory.getVotacionGateway();
 			tg.setConnection(con);
 			//Saco todos los tipos de vehiculo
 			result = tg.findAll();			
