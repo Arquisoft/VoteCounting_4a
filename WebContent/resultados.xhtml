@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Resultados</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:poll interval="3" update="votes" />
+			<p:chart id="votes" type="pie" model="#{instanciatorBean.beanResults.votesShow.pieChartModel}"
+				style="width:400px;height:300px" />
+		</h:form>
+	</h:body>
+</ui:composition>
+
