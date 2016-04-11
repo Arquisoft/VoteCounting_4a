@@ -19,7 +19,7 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-	</build> 
+	</build>
 
 	<repositories>
 		<!-- Primefaces -->
@@ -61,13 +61,21 @@
 			<artifactId>primefaces</artifactId>
 			<version>5.3</version>
 		</dependency>
-		<!-- JPA -->
 
+		<!-- BBDD -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.3</version>
-		</dependency> 
+		</dependency>
+
+		<!-- Bootsfaces -->
+		<dependency>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>0.8.0</version>
+			<scope>compile</scope>
+		</dependency>
 
 	</dependencies>
 </project>

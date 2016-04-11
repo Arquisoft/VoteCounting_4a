@@ -11,7 +11,7 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
     <managed-bean>
-		<managed-bean-name>beanResults</managed-bean-name>
+		<managed-bean-name>results</managed-bean-name>
 		<managed-bean-class>com.asw.presentation.BeanResults</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>

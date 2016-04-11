@@ -31,7 +31,6 @@ public class OpcionGatewayImpl implements OpcionGateway {
 			pst = con.prepareStatement(Conf.get("FIND_ALL_OPTIONS"));
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getLong(1) + ", " + rs.getString(2));
 				data.add(new Opcion(rs.getLong(1), rs.getString(2), rs
 						.getLong(3)));
 			}
