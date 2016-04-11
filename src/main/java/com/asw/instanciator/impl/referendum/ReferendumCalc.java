@@ -1,11 +1,15 @@
 package com.asw.instanciator.impl.referendum;
 
-import com.asw.instanciator.VotesCalc;
+import java.util.List;
 
-public class ReferendumCalc implements VotesCalc{
+import com.asw.instanciator.VotesCalc;
+import com.asw.model.Voto;
+
+public class ReferendumCalc extends VotesCalc{
 
 	@Override
-	public void calcularResultados() {
-		
+	public List<Voto> calcularResultados(List<Voto> votoscalculados) {
+		//El referendum no implica ninguna operacion sobre los votos
+		return votoscalculados;
 	}
 }

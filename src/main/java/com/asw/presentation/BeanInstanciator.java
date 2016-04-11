@@ -20,7 +20,7 @@ import com.asw.model.Voto;
 
 @ManagedBean(name = "instanciatorBean", eager = true)
 @ApplicationScoped
-public class BeanInstanciator implements Serializable{
+public class BeanInstanciator implements Serializable {
 
 	/**
 	 * 
@@ -48,12 +48,14 @@ public class BeanInstanciator implements Serializable{
 	public void init() {
 		System.out.println("BeanInstanciator - INIT");
 		beanResults = (BeanResults) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get(new String("beanResults"));
+				.getExternalContext().getSessionMap()
+				.get(new String("beanResults"));
 		if (beanResults == null) {
 			System.out.println("results - No existia");
 			beanResults = new BeanResults();
 			FacesContext.getCurrentInstance().getExternalContext()
-					.getApplicationMap().put(new String("beanResults"), beanResults);
+					.getApplicationMap()
+					.put(new String("beanResults"), beanResults);
 		}
 		cargarTipoVotacion();
 	}
@@ -82,13 +84,13 @@ public class BeanInstanciator implements Serializable{
 
 		AbstractFactory absf;
 		switch (vot.getNombre()) {
-			case "referendum": {
-				absf = new ReferendumFactory();
-				break;
-			}
-			default: {
-				throw new RuntimeException("Tipo de votación desconocida");
-			}
+		case "referendum": {
+			absf = new ReferendumFactory();
+			break;
+		}
+		default: {
+			throw new RuntimeException("Tipo de votación desconocida");
+		}
 		}
 		this.votesCalc = absf.crearCalc();
 		beanResults.setVotesShow(absf.crearShow());
@@ -102,7 +104,8 @@ public class BeanInstanciator implements Serializable{
 			public void run() {
 				List<Voto> votoscalculados = ServicesFactory.getVotesService()
 						.getPendingVotes();
-				beanResults.getVotos().addAll(votoscalculados);
+				beanResults.getVotos().addAll(
+						votesCalc.calcularResultados(votoscalculados));
 				System.out.println("Calculados " + votoscalculados.size()
 						+ " votos nuevos");
 			}

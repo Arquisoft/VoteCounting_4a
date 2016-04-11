@@ -4,24 +4,30 @@ import java.util.List;
 
 import org.primefaces.model.chart.PieChartModel;
 
-import com.asw.instanciator.prueba;
+import com.asw.conf.ServicesFactory;
+import com.asw.instanciator.VotesShow;
 import com.asw.model.Opcion;
 import com.asw.model.Voto;
 
-public class ReferendumShow extends prueba {
-
-	protected List<Voto> resultados;
-	protected List<Opcion> opciones;
+public class ReferendumShow extends VotesShow {
+	
+	public ReferendumShow() {
+		opciones = ServicesFactory.getVotesService().getAllOpciones();
+		this.pieChartModel = new PieChartModel();
+		pieChartModel.setTitle("Votes");
+		pieChartModel.setLegendPosition("ne");
+	}
 
 	@Override
 	public void setResults(List<Voto> results) {
 		setResultados(results);
 	}
 	
-	protected void getChartLive() {
-		showResults();
-		pieChartModel.setTitle("Votes");
-		pieChartModel.setLegendPosition("ne");
+	@Override
+	protected void updateChartLive() {
+		for (Opcion o : opciones) {
+			pieChartModel.getData().put(o.getNombre(), getVotosOpcion(o));
+		}
 	}
 
 	private int getVotosOpcion(Opcion o) {
@@ -31,32 +37,5 @@ public class ReferendumShow extends prueba {
 				cont++;
 		}
 		return cont;
-	}
-
-	@Override
-	public void showResults() {
-		for (Opcion o : opciones) {
-			pieChartModel.getData().put(o.getNombre(), getVotosOpcion(o));
-		}
-	}
-
-	public List<Voto> getResultados() {
-		return resultados;
-	}
-
-	public void setResultados(List<Voto> resultados) {
-		this.resultados = resultados;
-	}
-
-	public List<Opcion> getOpciones() {
-		return opciones;
-	}
-
-	public void setOpciones(List<Opcion> opciones) {
-		this.opciones = opciones;
-	}
-
-	public void setPieChartModel(PieChartModel pieChartModel) {
-		this.pieChartModel = pieChartModel;
 	}
 }

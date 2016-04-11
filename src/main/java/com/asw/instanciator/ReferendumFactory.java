@@ -11,7 +11,7 @@ public class ReferendumFactory extends AbstractFactory {
 	}
 
 	@Override
-	public prueba crearShow() {
+	public VotesShow crearShow() {
 		return new ReferendumShow();
 	}
 }

@@ -1,7 +1,11 @@
 package com.asw.instanciator;
 
-public interface VotesCalc {
+import java.util.List;
+
+import com.asw.model.Voto;
+
+public abstract class VotesCalc {
 	
-	void calcularResultados();
+	public abstract List<Voto> calcularResultados(List<Voto> votoscalculados);
 
 }
