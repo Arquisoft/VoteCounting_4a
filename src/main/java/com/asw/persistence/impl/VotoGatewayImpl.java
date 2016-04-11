@@ -21,36 +21,6 @@ public class VotoGatewayImpl implements VotoGateway {
 	}
 
 	@Override
-	public List<Voto> findAll() throws SQLException {
-
-		PreparedStatement pst = null;
-		ResultSet rs = null;
-		List<Voto> data = new ArrayList<Voto>();
-
-		try {
-			pst = con.prepareStatement(Conf.get("FIND_ALL_VOTES"));
-			rs = pst.executeQuery();
-			while (rs.next()) {
-				System.out.println(rs.getLong(1) + ", " + rs.getString(2));
-				data.add(new Voto(rs.getLong(1), rs.getDate(2), rs.getLong(3),
-						rs.getLong(4)));
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				con.close();
-				pst.close();
-				rs.close();
-			} catch (SQLException e) {
-				throw e;
-			}
-		}
-		return data;
-	}
-
-	@Override
 	public List<Voto> votosAContar() throws SQLException {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -60,16 +30,12 @@ public class VotoGatewayImpl implements VotoGateway {
 			pst = con.prepareStatement(Conf.get("FIND_ALL_VOTES_NO_READ"));
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getLong(1) + ", " + rs.getString(2));
 				data.add(new Voto(rs.getLong(1), rs.getDate(2), rs.getLong(3),
 						rs.getLong(4)));
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
 		} finally {
 			try {
-				con.close();
 				pst.close();
 				rs.close();
 			} catch (SQLException e) {
@@ -82,21 +48,15 @@ public class VotoGatewayImpl implements VotoGateway {
 	@Override
 	public void actualizarLeido(long id) throws SQLException {
 		PreparedStatement pst = null;
-		ResultSet rs = null;
-
 		try {
 			pst = con.prepareStatement(Conf.get("UPDATE_LEIDO"));
 			pst.setLong(1, id);
-			rs = pst.executeQuery();
-			con.commit();
-
+			pst.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			try {
-				con.close();
 				pst.close();
-				rs.close();
 			} catch (SQLException e) {
 				throw e;
 			}

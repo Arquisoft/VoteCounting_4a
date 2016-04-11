@@ -9,8 +9,6 @@ import com.asw.model.Voto;
 public interface VotoGateway {
 
 	void setConnection(Connection con);
-
-	List<Voto> findAll() throws SQLException;
 	
 	List<Voto> votosAContar() throws SQLException;
 	
