@@ -42,6 +42,8 @@ public class BeanInstanciator implements Serializable {
 	private VotacionesService votacionesService;
 
 	private String pageView;
+	
+	private VotacionManager VMaganer = VotacionManager.getVM();
 
 	private static final long TIEMPO_MS = 15000;
 
@@ -114,6 +116,7 @@ public class BeanInstanciator implements Serializable {
 						votesCalc.calcularResultados(votoscalculados));
 				
 				for (Voto v : votoscalculados) {
+					v.setLeido(true);
 					votosService.updateLeido(v);
 				}
 			}
@@ -135,5 +138,9 @@ public class BeanInstanciator implements Serializable {
 
 	public void setVotesCalc(VotesCalc votesCalc) {
 		this.votesCalc = votesCalc;
+	}
+
+	public VotacionManager getVMaganer() {
+		return VMaganer;
 	}
 }
