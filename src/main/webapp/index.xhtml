@@ -6,32 +6,15 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
-        <title>FILE UPLOAD</title>
+        <title>Inicio</title>
     </h:head>
     <h:body>
-        <h:form enctype="multipart/form-data">
-            <p:fileUpload/>
 			<h:form>
     		<p:poll interval="3" update="votes" />
     		<p:chart id="votes" type="pie" model="#{results.livePieModel}" style="width:400px;height:300px"/>
-			</h:form>
 			<h1>#{results.votoss}</h1>
-            <p:commandButton ajax="true" value="modal" onclick="$('.testModalPseudoClass').modal();"/>
-        </h:form>
-        <!--b:modal title="testModal" styleClass="testModalPseudoClass">
-            <h:form id="testForm">
-                <b:panelGrid colSpans="4,8">
-                    <h:outputLabel value="Input:"/>
-                    <b:inputText value="Test"/>
+			</h:form>
 
-                    <h:outputLabel value="Upload:"/>
-                    <p:fileUpload/>
-                    <b:panel title="test">
-                        test
-                    </b:panel>
-                </b:panelGrid>
-            </h:form>
-        </b:modal-->
     </h:body>
 </f:view>
 </html>
