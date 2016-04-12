@@ -65,10 +65,11 @@ public class Votacion{
 	}
 
 	public boolean isActiva() {
-		return false;
+		return activa;
 	}
 
 	public void setActiva(boolean activa) {
 		this.activa = activa;
 	}
+	
 }

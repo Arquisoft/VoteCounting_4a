@@ -9,5 +9,13 @@
 			org.springframework.web.jsf.el.SpringBeanFacesELResolver
 		</el-resolver>
 	</application>
+	
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>verResultados</from-outcome>
+			<to-view-id>/referendum.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

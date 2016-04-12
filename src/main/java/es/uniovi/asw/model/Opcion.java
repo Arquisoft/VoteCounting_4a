@@ -65,6 +65,18 @@ public class Opcion {
 		return true;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setVotos(Set<Voto> votos) {
+		this.votos = votos;
+	}
+
+	public void setVotacion(Votacion votacion) {
+		this.votacion = votacion;
+	}
+
 	@Id @GeneratedValue
 	private long id;
 	@OneToMany (mappedBy="opcion")
