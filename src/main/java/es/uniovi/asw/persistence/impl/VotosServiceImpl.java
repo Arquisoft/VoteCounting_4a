@@ -3,21 +3,19 @@ package es.uniovi.asw.persistence.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import es.uniovi.asw.model.ColegioElectoral;
 import es.uniovi.asw.model.Voto;
-import es.uniovi.asw.persistence.GetVotos;
+import es.uniovi.asw.persistence.VotosService;
 import es.uniovi.asw.persistence.repository.VotosRepository;
 
-public class GetVotosImpl implements GetVotos {
-	
-	private final VotosRepository repo;
+@Service
+public class VotosServiceImpl implements VotosService {
 	
 	@Autowired
-	public GetVotosImpl(VotosRepository repo)
-	{
-		this.repo = repo;
-	}
+	private VotosRepository repo;
+	
 
 	@Override
 	public List<Voto> getAllVotes(ColegioElectoral ce) {

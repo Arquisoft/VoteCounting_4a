@@ -5,7 +5,7 @@ import java.util.List;
 import es.uniovi.asw.model.ColegioElectoral;
 import es.uniovi.asw.model.Voto;
 
-public interface GetVotos {
+public interface VotosService {
 	
 	List<Voto> getAllVotes(ColegioElectoral ce);
 	

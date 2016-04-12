@@ -5,7 +5,7 @@ import java.util.List;
 import es.uniovi.asw.model.Opcion;
 import es.uniovi.asw.model.Votacion;
 
-public interface GetOpciones {
+public interface OpcionesService {
 	
 	List<Opcion> getOpciones(Votacion v);
 

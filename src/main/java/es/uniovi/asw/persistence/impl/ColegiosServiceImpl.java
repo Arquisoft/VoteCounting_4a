@@ -1,20 +1,18 @@
 package es.uniovi.asw.persistence.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import es.uniovi.asw.model.ColegioElectoral;
-import es.uniovi.asw.persistence.GetColegiosElectorales;
+import es.uniovi.asw.persistence.ColegiosService;
 import es.uniovi.asw.persistence.repository.ColegiosElectoralesRepository;
 
-public class GetColegiosElectoralesImpl implements GetColegiosElectorales {
+@Service
+public class ColegiosServiceImpl implements ColegiosService {
 
-	private final ColegiosElectoralesRepository repo;
-	
 	@Autowired
-	public GetColegiosElectoralesImpl(ColegiosElectoralesRepository repo)
-	{
-		this.repo = repo;
-	}
+	private ColegiosElectoralesRepository repo;
+	
 
 	@Override
 	public ColegioElectoral findById(long id) {
