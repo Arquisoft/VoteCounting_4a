@@ -6,10 +6,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.conf.ServicesFactory;
 import es.uniovi.asw.conf.VotacionManager;
@@ -18,9 +19,10 @@ import es.uniovi.asw.instanciator.ReferendumFactory;
 import es.uniovi.asw.instanciator.VotesCalc;
 import es.uniovi.asw.model.Votacion;
 import es.uniovi.asw.model.Voto;
+import es.uniovi.asw.persistence.repository.VotosRepository;
 
-@ManagedBean(name = "instanciatorBean", eager = true)
-@ApplicationScoped
+@Component("instanciatorBean")
+@Scope("application")
 public class BeanInstanciator implements Serializable {
 
 	/**
@@ -48,15 +50,15 @@ public class BeanInstanciator implements Serializable {
 	@PostConstruct
 	public void init() {
 		System.out.println("BeanInstanciator - INIT");
-		beanResults = (BeanResults) FacesContext.getCurrentInstance()
+		/*beanResults = (BeanResults) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap()
-				.get(new String("beanResults"));
+				.get(new String("beanResults"));*/
 		if (beanResults == null) {
 			System.out.println("results - No existia");
 			beanResults = new BeanResults();
-			FacesContext.getCurrentInstance().getExternalContext()
+			/*FacesContext.getCurrentInstance().getExternalContext()
 					.getApplicationMap()
-					.put(new String("beanResults"), beanResults);
+					.put(new String("beanResults"), beanResults);*/
 		}
 		cargarTipoVotacion();
 	}

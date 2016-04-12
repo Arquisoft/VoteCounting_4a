@@ -3,14 +3,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.instanciator.VotesShow;
 import es.uniovi.asw.model.Voto;
  
-@ManagedBean (name="results")
-@ApplicationScoped
+@Component ("results")
+@Scope("application")
 public class BeanResults implements Serializable {
 
 	/**

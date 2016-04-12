@@ -15,6 +15,7 @@ import es.uniovi.asw.persistence.repository.OpcionesRepository;
 import es.uniovi.asw.persistence.repository.VotacionesRepository;
 import es.uniovi.asw.persistence.repository.VotosRepository;
 
+
 public class PersistenceFactory {
 	
 	@Autowired
