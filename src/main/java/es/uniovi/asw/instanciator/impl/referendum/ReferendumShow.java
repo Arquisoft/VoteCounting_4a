@@ -1,6 +1,7 @@
 package es.uniovi.asw.instanciator.impl.referendum;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import es.uniovi.asw.conf.VotacionManager;
 import es.uniovi.asw.instanciator.VotesShow;
@@ -30,16 +31,13 @@ public class ReferendumShow extends VotesShow {
 	@Override
 	protected void updateChartLive() {
 		for (Opcion o : VotacionManager.getVM().getOpciones()) {
-			pieChartModel.getData().put(o.getNombre(), getVotosOpcion(o));
+			pieChartModel.getData().put(o.getNombre(), getVotosOpcion(o).size());
 		}
 	}
 
-	private int getVotosOpcion(Opcion o) {
-		int cont = 0;
-		for (Voto v : resultados) {
-			if (v.getOpcion().getId() == o.getId())
-				cont++;
-		}
-		return cont;
+	private List<Voto> getVotosOpcion(Opcion o) {
+		return resultados.stream()
+				.filter(v -> v.getOpcion().getId() == o.getId())
+				.collect(Collectors.toList());
 	}
 }
