@@ -1,6 +1,8 @@
 package es.uniovi.asw;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
@@ -33,7 +35,11 @@ public class MainControllerTest {
 
   @Test
   public void testLanding() throws Exception {
-    mvc.perform(get("/")).andExpect(status().is3xxRedirection());
+	  mvc.perform(get("/index.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Sistema de Conteo")));
+  }
+  @Test
+  public void testReferendum() throws Exception {
+	  mvc.perform(get("/referendum.xhtml")).andExpect(status().isOk()).andExpect(content().string(containsString("Resultados del Referendum")));
   }
 
 }

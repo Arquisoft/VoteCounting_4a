@@ -4,12 +4,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+<link rel="stylesheet" type="text/css" href="/css/voting.css" media="screen" />
+</h:head>
 <h:body>
 	<f:view transient="true">
-
-		<p:graphicImage name="images/fotaca.jpg" />
-		
+		<h1>Sistema de Conteo</h1>
 		<h:form>
 			<h:commandButton id="entrar" value="Resultados"
 				action="verResultados" />
