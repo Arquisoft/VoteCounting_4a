@@ -17,10 +17,15 @@
 			</p:dataTable>
 			<br></br>
 			<h:form>
-				<p:poll interval="3" update="votes" />
+				<p:poll interval="6" update="votes" />
 				<p:chart id="votes" type="pie"
 					model="#{instanciatorBean.beanResults.votesShow.pieChartModel}"
 					style="width:400px;height:300px" />
+				<p:poll interval="6" update="linevotes" />
+				<p:chart id="linevotes" type="line"
+					model="#{instanciatorBean.beanResults.votesShow.lineChartModel}"
+					style="height:400px;" />
+
 			</h:form>
 		</f:view>
 	</h:body>

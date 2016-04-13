@@ -92,4 +92,14 @@ public class Voto {
 		this.leido = leido;
 	}
 
+	public Date getFechaVoto() {
+		return fechaVoto;
+	}
+
+	public void setFechaVoto(Date fechaVoto) {
+		this.fechaVoto = fechaVoto;
+	}
+	
+	
+
 }
