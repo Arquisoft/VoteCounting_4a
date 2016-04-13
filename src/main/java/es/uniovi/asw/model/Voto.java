@@ -27,10 +27,6 @@ public class Voto {
 	private Date fechaVoto;
 	@ColumnDefault(value="false")
 	private boolean leido;
-
-	public Voto(long long1, java.sql.Date date, long long2, long long3) {
-		// TODO Auto-generated constructor stub
-	}
 	
 	public Voto(){}
 

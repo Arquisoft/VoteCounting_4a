@@ -13,18 +13,14 @@ import javax.persistence.Table;
 @Table(name = "TVotacion")
 public class Votacion{
 
-	Votacion() {}
-	
-	public Votacion(long long1, String string) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Id @GeneratedValue
 	private long id;
 	private String nombre;
 	private boolean activa;
 	@OneToMany (mappedBy = "votacion")
 	private Set<Opcion> opciones = new HashSet<Opcion>();
+	
+	Votacion() {}
 	
 	public String getNombre() {
 		return nombre;

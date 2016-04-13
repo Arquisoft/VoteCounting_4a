@@ -14,11 +14,15 @@ import javax.persistence.Table;
 @Table (name="TOpcion")
 public class Opcion {
 	
-	Opcion() { }
+	@Id @GeneratedValue
+	private long id;
+	@OneToMany (mappedBy="opcion")
+	private Set<Voto> votos = new HashSet<Voto>();
+	@ManyToOne
+	private Votacion votacion;
+	private String nombre;
 	
-	public Opcion(long long1, String string, long long2) {
-		// TODO Auto-generated constructor stub
-	}
+	Opcion() { }
 
 	public String getNombre() {
 		return nombre;
@@ -77,11 +81,5 @@ public class Opcion {
 		this.votacion = votacion;
 	}
 
-	@Id @GeneratedValue
-	private long id;
-	@OneToMany (mappedBy="opcion")
-	private Set<Voto> votos = new HashSet<Voto>();
-	@ManyToOne
-	private Votacion votacion;
-	private String nombre;
+	
 }

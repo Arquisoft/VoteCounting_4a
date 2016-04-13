@@ -13,11 +13,17 @@ import javax.persistence.Table;
 @Table (name = "TColegioElectoral")
 public class ColegioElectoral {
 	
+	@Id @GeneratedValue
+	private long id;
+	private long ident;
+	private String nombre;
+	@OneToMany (mappedBy="colegioElectoral")
+	private Set<Votante> votantes = new HashSet<Votante>();
+	@OneToMany (mappedBy="colegioElectoral")
+	private Set<Voto> votos = new HashSet<Voto>();
+	
 	ColegioElectoral() { }
 	
-	public ColegioElectoral(long long1, long long2, String string) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public long getIdent() {
 		return ident;
@@ -68,12 +74,4 @@ public class ColegioElectoral {
 		return true;
 	}
 
-	@Id @GeneratedValue
-	private long id;
-	private long ident;
-	private String nombre;
-	@OneToMany (mappedBy="colegioElectoral")
-	private Set<Votante> votantes = new HashSet<Votante>();
-	@OneToMany (mappedBy="colegioElectoral")
-	private Set<Voto> votos = new HashSet<Voto>();
 }

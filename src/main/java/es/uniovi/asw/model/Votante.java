@@ -9,12 +9,20 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table (name="TVotante")
 public class Votante {
+
+	@Id
+	private String NIF;
+	@NotNull
+	private String nombre;
+	@NotNull
+	private String apellidos;
+	@NotNull
+	private boolean voto;
+	
+	@ManyToOne
+	private ColegioElectoral colegioElectoral;
 	
 	Votante () { }
-
-	public Votante(String string, String string2, String string3, boolean boolean1, long long1) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -76,20 +84,6 @@ public class Votante {
 			return false;
 		return true;
 	}
-
-
-
-	@Id
-	private String NIF;
-	@NotNull
-	private String nombre;
-	@NotNull
-	private String apellidos;
-	@NotNull
-	private boolean voto;
-	
-	@ManyToOne
-	private ColegioElectoral colegioElectoral;
 	
 	
 }

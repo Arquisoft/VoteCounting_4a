@@ -26,21 +26,6 @@ public class Voter {
 	 *  Constructor sin parámetros de la clase Voter.
 	 */
 	public Voter() {}
-
-	/**
-	 * Constructor con parámetros de la clase Voter.
-	 * @param nombre, nombre del votante.
-	 * @param email, email del votante.
-	 * @param password, contraseña del votante.
-	 * @param dni, documento de identificación del votante.
-	 */
-	public Voter(String nombre, String email, String password, String dni) {
-		super();
-		this.email = email;
-		this.nombre = nombre;
-		this.password =  password;
-		this.dni = dni;
-	}
 	
 	/**
 	 * Método de acceso a la propiedad nombre de la clase Voter.
