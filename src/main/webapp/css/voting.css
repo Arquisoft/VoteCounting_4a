@@ -1,7 +1,10 @@
 body {
     background-image: url("/images/fotaca.jpg");
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
 }
 
 h1 {
-	color: blue;
+	color: green;
 }
