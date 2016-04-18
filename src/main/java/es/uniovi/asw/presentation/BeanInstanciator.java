@@ -90,10 +90,9 @@ public class BeanInstanciator implements Serializable {
 		Votacion vot = VotacionManager.getVM().getVotacion();
 		// Indicamos que pagina tiene que ir
 		setPageView(vot.getNombre() + ".xhtml");
-
 		AbstractFactory absf;
-		switch (vot.getNombre()) {
-			case "referendum": {
+		switch (vot.getNombre().toUpperCase()) {
+			case "REFERENDUM": {
 				absf = new ReferendumFactory();
 				break;
 			}

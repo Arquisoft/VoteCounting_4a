@@ -23,7 +23,7 @@ public class Voto {
 	private Opcion opcion;
 	@ManyToOne
 	private ColegioElectoral colegioElectoral;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaVoto;
 	@ColumnDefault(value="false")
 	private boolean leido;
