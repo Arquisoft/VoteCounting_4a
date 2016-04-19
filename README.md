@@ -1,5 +1,7 @@
 # Vote Counting & Publishing system
 
+[![Join the chat at https://gitter.im/Arquisoft/VoteCounting_4a](https://badges.gitter.im/Arquisoft/VoteCounting_4a.svg)](https://gitter.im/Arquisoft/VoteCounting_4a?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [Project Site](http://arquisoft.github.io/VoteCounting_4a/)
 
 [![Build Status](https://travis-ci.org/Arquisoft/VoteCounting_4a.svg?branch=master)](https://travis-ci.org/Arquisoft/VoteCounting_4a)
