@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,11 +28,13 @@ public class MainControllerTest {
   private WebApplicationContext context;
 
   private MockMvc mvc;
-
   @Before
   public void setUp() throws Exception {
     mvc = MockMvcBuilders.webAppContextSetup(context).build();
   }
+  
+  
+
 
   @Test
   public void testLanding() throws Exception {
