@@ -21,35 +21,35 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import es.uniovi.asw.Application;
 
-@ContextConfiguration(classes=Application.class, loader=SpringApplicationContextLoader.class)
+@ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
 @IntegrationTest
 @WebAppConfiguration
 public class ReferendumSteps {
-  
-  @Autowired
-  protected WebApplicationContext context;
 
-  protected MockMvc mvc;
-  protected MvcResult result;
-  
-  @Value("${local.server.port}")
-  protected int port;
-  
-  @When("^the client call /referendum\\.xhtml$")
-  public void the_client_calls() throws Throwable {
-    Assert.notNull(context);
-    this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
-    result = mvc.perform(get("/referendum.xhtml")).andReturn();
-  }
+	@Autowired
+	protected WebApplicationContext context;
 
-  @Then("^the client receives status cod of (\\d+)$")
-  public void the_client_receives_status_code_of(int status) throws Throwable {
-    assertThat(result.getResponse().getStatus(), is(status));
-  }
+	protected MockMvc mvc;
+	protected MvcResult result;
 
-  @Then("^the client receives the stringResult \"([^\"]*)\"$")
-  public void the_client_receives_the_stringResult(String str) throws Throwable {
-   assertThat(result.getResponse().getContentAsString(), containsString(str));
-  }
+	@Value("${local.server.port}")
+	protected int port;
+
+	@When("^the client call /referendum\\.xhtml$")
+	public void the_client_calls() throws Throwable {
+		Assert.notNull(context);
+		this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
+		result = mvc.perform(get("/referendum.xhtml")).andReturn();
+	}
+
+	@Then("^the client receives status cod of (\\d+)$")
+	public void the_client_receives_status_code_of(int status) throws Throwable {
+		assertThat(result.getResponse().getStatus(), is(status));
+	}
+
+	@Then("^the client receives the stringResult \"([^\"]*)\"$")
+	public void the_client_receives_the_stringResult(String str) throws Throwable {
+		assertThat(result.getResponse().getContentAsString(), containsString(str));
+	}
 
 }

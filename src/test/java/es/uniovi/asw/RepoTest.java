@@ -3,9 +3,7 @@ package es.uniovi.asw;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-
 import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
 import es.uniovi.asw.model.ColegioElectoral;
 import es.uniovi.asw.model.Opcion;
 import es.uniovi.asw.model.Votacion;
@@ -38,6 +35,12 @@ public class RepoTest {
 	@Autowired
 	private OpcionesRepository opcionRepo;
 
+	/**
+	 * Metodo que comprueba el correcto funcionamiento de la tabla voto de la
+	 * base de datos.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testVotos() throws Exception {
 		List<Voto> votos = (List<Voto>) votoRepo.findAll();
@@ -52,6 +55,12 @@ public class RepoTest {
 		assertEquals(78, votosColegio2.size());
 	}
 
+	/**
+	 * Metodo que comprueba el correcto funcionamiento de la tabla votacion de
+	 * la base de datos.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testVotacion() throws Exception {
 		Votacion votacion = votacionRepo.findByActiva(true);
@@ -64,26 +73,38 @@ public class RepoTest {
 		assertNotNull(votacion);
 	}
 
+	/**
+	 * Metodo que comprueba el correcto funcionamiento de la tabla colegio
+	 * electoral de la base de datos.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testColegioElectoral() throws Exception {
 		List<ColegioElectoral> colegios = (List<ColegioElectoral>) colegioElectoralRepo.findAll();
-		assertEquals(2,colegios.size());
+		assertEquals(2, colegios.size());
 		ColegioElectoral colegio = colegioElectoralRepo.findById(1);
-		assertEquals("Colegio electoral 1",colegio.getNombre());
+		assertEquals("Colegio electoral 1", colegio.getNombre());
 		colegio = colegioElectoralRepo.findById(2);
-		assertEquals("Colegio electoral 2",colegio.getNombre());
+		assertEquals("Colegio electoral 2", colegio.getNombre());
 		colegio = colegioElectoralRepo.findOne((long) 1);
 		assertNotNull(colegio);
 	}
 
+	/**
+	 * Metodo que comprueba el correcto funcionamiento de la tabla opcion de la
+	 * base de datos.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testOpcion() throws Exception {
 		List<Opcion> opciones = (List<Opcion>) opcionRepo.findAll();
-		assertEquals(3,opciones.size());
+		assertEquals(3, opciones.size());
 		opciones = opcionRepo.findByVotacion(votacionRepo.findByActiva(true));
-		assertEquals(3,opciones.size());
+		assertEquals(3, opciones.size());
 		opciones = opcionRepo.findByVotacion(votacionRepo.findByActiva(false));
-		assertEquals(0,opciones.size());
+		assertEquals(0, opciones.size());
 	}
 
 }
