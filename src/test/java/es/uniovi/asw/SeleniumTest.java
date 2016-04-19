@@ -24,13 +24,13 @@ public class SeleniumTest {
 	@Before
 	public void run() throws Exception {
 		driver = new FirefoxDriver();
-		baseUrl = "https://salty-fortress-91005.herokuapp.com/";
+		baseUrl = "http://vote-counting-4a.herokuapp.com/";
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@Test
 	public void testIndex() throws Exception {
-		driver.get(baseUrl + "/index.xhtml");
+		driver.get(baseUrl + "index.xhtml");
 		esperar();
 		// Compruebo que existe el boton "Entrar".
 		assertFalse(driver.findElement(By.id("j_idt6:entrar")) == null);
@@ -43,7 +43,7 @@ public class SeleniumTest {
 
 	@Test
 	public void testResultadosReferendum() throws Exception {
-		driver.get(baseUrl + "/referendum.xhtml");
+		driver.get(baseUrl + "referendum.xhtml");
 		esperar();
 		// Compruebo que esto en la página que le indico.
 		assertTrue(textoPresentePagina(driver, "Resultados del Referendum"));
