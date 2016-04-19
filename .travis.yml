@@ -1,5 +1,7 @@
 language: java
 jdk:
 - oraclejdk8
+env:
+- localhost=localhost.localdomain DISPLAY=:99 WD_SPEC_DRIVER=firefox
 after_success:
   - bash <(curl -s https://codecov.io/bash)
