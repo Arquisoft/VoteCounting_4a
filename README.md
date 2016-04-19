@@ -10,6 +10,8 @@
 [![Code Climate](https://codeclimate.com/github/Arquisoft/VoteCounting_4a/badges/gpa.svg)](https://codeclimate.com/github/Arquisoft/VoteCounting_4a)
 [![Issue Count](https://codeclimate.com/github/Arquisoft/VoteCounting_4a/badges/issue_count.svg)](https://codeclimate.com/github/Arquisoft/VoteCounting_4a)
 
+[![GitHub version](https://badge.fury.io/gh/Arquisoft%2FVoteCounting_4a.svg)](https://badge.fury.io/gh/Arquisoft%2FVoteCounting_4a)
+
 ##Chat
 
 [![Chat on Gitter](https://badges.gitter.im/Arquisoft/VoteCounting_4a.svg)](https://gitter.im/Arquisoft/VoteCounting_4a)
