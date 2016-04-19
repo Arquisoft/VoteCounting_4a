@@ -27,26 +27,24 @@ import es.uniovi.asw.persistence.VotosService;
 @Scope("application")
 public class BeanInstanciator implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Autowired
 	private OpcionesService opcionesService;
-	
+
 	@Autowired
 	private VotosService votosService;
-	
+
 	@Autowired
 	private VotacionesService votacionesService;
 
 	private String pageView;
-	
+
 	private VotacionManager VMaganer = VotacionManager.getVM();
 
 	private static final long TIEMPO_MS = 15000;
 
+	// Inyeccion de dependencia
 	@ManagedProperty(value = "#{results}")
 	private BeanResults beanResults;
 
@@ -60,24 +58,27 @@ public class BeanInstanciator implements Serializable {
 
 	private VotesCalc votesCalc;
 
+	/**
+	 * Metodo que se inicia siempre en la construccion del bean, y que se
+	 * encarga de establecer la configuracion e instanciar adecuadamente todo lo
+	 * necesario.
+	 */
 	@PostConstruct
 	public void init() {
 		System.out.println("BeanInstanciator - INIT");
-		
+
 		Votacion vot = votacionesService.getActive(true);
 		VotacionManager.getVM().setOpciones(opcionesService.getOpciones(vot));
 		VotacionManager.getVM().setVotacion(vot);
-		
-		beanResults = (BeanResults) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap()
+
+		beanResults = (BeanResults) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
 				.get(new String("beanResults"));
-		
+
 		if (beanResults == null) {
 			System.out.println("results - No existia");
 			beanResults = new BeanResults();
-			FacesContext.getCurrentInstance().getExternalContext()
-					.getApplicationMap()
-					.put(new String("beanResults"), beanResults);
+			FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().put(new String("beanResults"),
+					beanResults);
 		}
 		cargarTipoVotacion();
 	}
@@ -92,28 +93,36 @@ public class BeanInstanciator implements Serializable {
 		setPageView(vot.getNombre() + ".xhtml");
 		AbstractFactory absf;
 		switch (vot.getNombre().toUpperCase()) {
-			case "REFERENDUM": {
-				absf = new ReferendumFactory();
-				break;
-			}
-			default: {
-				throw new RuntimeException("Tipo de votación desconocida");
-			}
+		case "REFERENDUM": {
+			absf = new ReferendumFactory();
+			break;
+		}
+		default: {
+			throw new RuntimeException("Tipo de votación desconocida");
+		}
 		}
 		this.votesCalc = absf.crearCalc();
 		beanResults.setVotesShow(absf.crearShow());
 		calculoVotosPeriodicos();
 	}
 
+	/**
+	 * Metodo que se ejecuta periodicamente cada 15 segundos y que actualiza el
+	 * recuento de votos no leidos.
+	 */
 	private void calculoVotosPeriodicos() {
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see java.util.TimerTask#run()
+			 */
 			@Override
 			public void run() {
 				List<Voto> votoscalculados = votosService.votosLeidos(false);
-				beanResults.getVotos().addAll(
-						votesCalc.calcularResultados(votoscalculados));
-				
+				beanResults.getVotos().addAll(votesCalc.calcularResultados(votoscalculados));
+
 				for (Voto v : votoscalculados) {
 					v.setLeido(true);
 					votosService.updateLeido(v);
@@ -123,22 +132,47 @@ public class BeanInstanciator implements Serializable {
 		timer.schedule(task, 0, TIEMPO_MS);
 	}
 
+	/**
+	 * Metodo para la obtencion de la propiedad pageView.
+	 * 
+	 * @return String pageView
+	 */
 	public String getPageView() {
 		return pageView;
 	}
 
+	/**
+	 * Metodo para la modificacion de la propiedad pageView.
+	 * 
+	 * @param pageView
+	 */
 	public void setPageView(String pageView) {
 		this.pageView = pageView;
 	}
 
+	/**
+	 * Metodo para la obtencion de la propiedad votesCalc.
+	 * 
+	 * @return Objecto de tipo VotesCalc
+	 */
 	public VotesCalc getVotesCalc() {
 		return votesCalc;
 	}
 
+	/**
+	 * Metodo para la modificacion de la propiedad votesCalc.
+	 * 
+	 * @param votesCalc
+	 */
 	public void setVotesCalc(VotesCalc votesCalc) {
 		this.votesCalc = votesCalc;
 	}
 
+	/**
+	 * Metodo de acceso al atributo VManager.
+	 * 
+	 * @return Objeto de tipo VotacionManager
+	 */
 	public VotacionManager getVMaganer() {
 		return VMaganer;
 	}

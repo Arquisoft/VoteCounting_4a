@@ -25,10 +25,18 @@ public class ReferendumShow extends VotesShow {
 		setUpLineChart();
 	}
 
+	/**
+	 * Metodo de instanciacion de la propiedad heredada lineChartModel (grafica
+	 * de puntos).
+	 */
 	private void setUpLineChart() {
 		lineChartModel = new LineChartModel();
 	}
 
+	/**
+	 * Metodo de instanciacion de la propiedad heredada lineChartModel (grafica
+	 * de sectores).
+	 */
 	private void setUpSectChart() {
 		pieChartModel.setFill(false);
 		pieChartModel.setShowDataLabels(true);
@@ -36,11 +44,21 @@ public class ReferendumShow extends VotesShow {
 		pieChartModel.setLegendPosition("ne");
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see es.uniovi.asw.instanciator.VotesShow#setResults(java.util.List)
+	 */
 	@Override
 	public void setResults(List<Voto> results) {
 		setResultados(results);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see es.uniovi.asw.instanciator.VotesShow#updateChartLive()
+	 */
 	@Override
 	protected void updateChartLive() {
 		for (Opcion o : VotacionManager.getVM().getOpciones()) {
@@ -48,6 +66,11 @@ public class ReferendumShow extends VotesShow {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see es.uniovi.asw.instanciator.VotesShow#updateChartLine()
+	 */
 	@Override
 	protected void updateChartLine() {
 		lineChartModel = new LineChartModel();
@@ -56,12 +79,11 @@ public class ReferendumShow extends VotesShow {
 			series = new LineChartSeries();
 			series.setLabel(o.getNombre());
 
-			Map<Date, List<Voto>> sorted = new TreeMap<Date, List<Voto>>(getVotosOpcion(o).stream()
-					.collect(Collectors.groupingBy(Voto::getFechaVoto)));
+			Map<Date, List<Voto>> sorted = new TreeMap<Date, List<Voto>>(
+					getVotosOpcion(o).stream().collect(Collectors.groupingBy(Voto::getFechaVoto)));
 
 			for (Map.Entry<Date, List<Voto>> entrada : sorted.entrySet()) {
-				series.set(new SimpleDateFormat("HH:mm").format(entrada.getKey()), 
-						entrada.getValue().size());
+				series.set(new SimpleDateFormat("HH:mm").format(entrada.getKey()), entrada.getValue().size());
 			}
 			lineChartModel.addSeries(series);
 		}
@@ -77,6 +99,14 @@ public class ReferendumShow extends VotesShow {
 		lineChartModel.getAxes().put(AxisType.X, axis);
 	}
 
+	/**
+	 * Metodo que filtra mediante la programacion funcional los votos de una
+	 * opcion pasada por parametros.
+	 * 
+	 * @param o
+	 *            Opcion
+	 * @return Lista de votos de la Opcion pasada por parametros
+	 */
 	private List<Voto> getVotosOpcion(Opcion o) {
 		return resultados.stream().filter(v -> v.getOpcion().getId() == o.getId()).collect(Collectors.toList());
 	}
