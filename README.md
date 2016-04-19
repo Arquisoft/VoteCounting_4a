@@ -6,7 +6,9 @@
 [![codecov.io](https://codecov.io/github/Arquisoft/VoteCounting_4a/coverage.svg?branch=master)](https://codecov.io/github/Arquisoft/VoteCounting_4a?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5716a529fcd19a0039f1789d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5716a529fcd19a0039f1789d)
 [![ViewOnHeroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://vote-counting-4a.herokuapp.com)
+
 [![Code Climate](https://codeclimate.com/github/Arquisoft/VoteCounting_4a/badges/gpa.svg)](https://codeclimate.com/github/Arquisoft/VoteCounting_4a)
+[![Issue Count](https://codeclimate.com/github/Arquisoft/VoteCounting_4a/badges/issue_count.svg)](https://codeclimate.com/github/Arquisoft/VoteCounting_4a)
 
 ##Chat
 
