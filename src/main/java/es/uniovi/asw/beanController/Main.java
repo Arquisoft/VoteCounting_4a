@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(basePackages = { "es.uniovi.asw" })
-public class Main extends SpringBootServletInitializer
+public class Main extends SpringBootServletInitializer implements ServletContextAware
 {
 	public static void main(String[] args)
 	{
@@ -64,6 +64,11 @@ public class Main extends SpringBootServletInitializer
 				registry.addViewController("/").setViewName("redirect:/index.xhtml");
 			}
 		};
+	}
+	
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 	}
 	
 }
