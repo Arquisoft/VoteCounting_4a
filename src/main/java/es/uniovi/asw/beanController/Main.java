@@ -1,8 +1,6 @@
 package es.uniovi.asw.beanController;
 
 import javax.faces.webapp.FacesServlet;
-import javax.servlet.ServletContext;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +9,6 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -19,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(basePackages = { "es.uniovi.asw" })
-public class Main extends SpringBootServletInitializer implements ServletContextAware
+public class Main extends SpringBootServletInitializer
 {
 	public static void main(String[] args)
 	{
@@ -64,11 +61,6 @@ public class Main extends SpringBootServletInitializer implements ServletContext
 				registry.addViewController("/").setViewName("redirect:/index.xhtml");
 			}
 		};
-	}
-	
-	@Override
-	public void setServletContext(ServletContext servletContext) {
-		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 	}
 	
 }
