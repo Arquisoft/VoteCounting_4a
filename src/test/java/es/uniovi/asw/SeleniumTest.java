@@ -30,7 +30,7 @@ public class SeleniumTest {
 	@Before
 	public void run() throws Exception {
 		driver = new FirefoxDriver();
-		baseUrl = "http://vote-counting-4a.herokuapp.com/";
+		baseUrl = "http://localhost:8080/";
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
@@ -44,10 +44,10 @@ public class SeleniumTest {
 	public void testIndex() throws Exception {
 		driver.get(baseUrl + "index.xhtml");
 		esperar();
-		// Compruebo que existe el boton "Entrar".
-		assertFalse(driver.findElement(By.id("j_idt6:entrar")) == null);
+		// Compruebo que existe el en el navbar la pestaña referendum.
+		assertFalse(driver.findElement(By.id("j_idt6")) == null);
 		// Hago click en el botón.
-		driver.findElement(By.id("j_idt6:entrar")).click();
+		driver.findElement(By.id("j_idt6")).click();
 		esperar();
 		// Compruebo que se ha producido la navegación correctamente.
 		assertTrue(textoPresentePagina(driver, "Opciones disponibles"));

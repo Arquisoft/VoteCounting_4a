@@ -1,6 +1,7 @@
 package es.uniovi.asw.beanController;
 
 import javax.faces.webapp.FacesServlet;
+import javax.servlet.ServletContext;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,6 +11,7 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -43,6 +45,8 @@ public class Main extends SpringBootServletInitializer
 		{
 			servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 			servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
+			servletContext.addListener(com.sun.faces.config.ConfigureListener.class);
+			servletContext.setInitParameter("BootsFaces_THEME", "cyborg");
 		};
 	}
 	
@@ -59,4 +63,5 @@ public class Main extends SpringBootServletInitializer
 			}
 		};
 	}
+	
 }
